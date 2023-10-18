@@ -15,7 +15,7 @@ class MainScreenPage(Page):
         self.driver.refresh()
 
     def get_subscription_click(self):
-        self.click(*self.GET_SUBSCRIPTION)
+        self.wait_for_element_clickable_click(*self.GET_SUBSCRIPTION)
         sleep(3)
 
 

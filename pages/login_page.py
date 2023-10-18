@@ -24,5 +24,5 @@ class LoginPage(Page):
         self.input_text(text,*self.PASSWORD_INPUT)
 
     def click_continue_button(self):
-        self.click(*self.CONTINUE_BUTTON)
+        self.wait_for_element_clickable_click(*self.CONTINUE_BUTTON)
 

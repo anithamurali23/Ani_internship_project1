@@ -67,7 +67,7 @@ class Page:
     def wait_for_element_clickable(self, *locator):
         self.wait.until(
             EC.element_to_be_clickable(locator))
-        # logger.info(f'element not clickable:{locator}')
+        # logger.info(f'Element not clickable:{locator}')
 
 
     def wait_for_element_clickable_click(self, *locator):
