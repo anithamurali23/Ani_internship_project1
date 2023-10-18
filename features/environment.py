@@ -18,17 +18,17 @@ def browser_init(context):
     # context.driver = webdriver.Chrome(service=service)
 
 
-    service = Service(executable_path='//Users/anithamurali/Downloads/Anitha_Internship_project/geckodriver')
-    context.driver = webdriver.Firefox(service=service)
+    # service = Service(executable_path='//Users/anithamurali/Downloads/Anitha_Internship_project/geckodriver')
+    # context.driver = webdriver.Firefox(service=service)
     # context.driver = webdriver.Safari()
 
     # HEADLESS MODE ####
-    # options = webdriver.ChromeOptions()
-    # options.add_argument('--headless')
-    # service = Service(executable_path='//Users/anithamurali/Downloads/Anitha_Internship_project/chromedriver')
-    #
-    # context.driver = webdriver.Chrome(options=options, service=service)
-    # context.driver.set_window_size(1920,1080)
+    options = webdriver.ChromeOptions()
+    options.add_argument('--headless')
+    service = Service(executable_path='//Users/anithamurali/Downloads/Anitha_Internship_project/chromedriver')
+
+    context.driver = webdriver.Chrome(options=options, service=service)
+    context.driver.set_window_size(1920,1080)
     # context.driver = webdriver.Firefox(service=service)
     # context.driver = webdriver.Safari()
 
