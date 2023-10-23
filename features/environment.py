@@ -8,14 +8,14 @@ from support.logger import logger
 
 # behave -f allure_behave.formatter:AllureFormatter -o test_results/ features/tests/bestsellers.feature
 
-def browser_init(context):
-# def browser_init(context, scenario_name):  # add scenario_name if you want to use it in Browserstack
+# def browser_init(context):
+def browser_init(context, scenario_name):  # add scenario_name if you want to use it in Browserstack
     """
     :param context: Behave context
     """
 
-    # service = Service(executable_path='/Users/anithamurali/Desktop/python-selenium-automation1/chromedriver')
-    # context.driver = webdriver.Chrome(service=service)
+    service = Service(executable_path='/Users/anithamurali/Desktop/Anitha_Internship_project 2/chromedriver')
+    context.driver = webdriver.Chrome(service=service)
 
 
     # service = Service(executable_path='//Users/anithamurali/Downloads/Anitha_Internship_project/geckodriver')
@@ -23,31 +23,31 @@ def browser_init(context):
     # context.driver = webdriver.Safari()
 
     # HEADLESS MODE ####
-    options = webdriver.ChromeOptions()
-    options.add_argument('--headless')
-    service = Service(executable_path='//Users/anithamurali/Downloads/Anitha_Internship_project/chromedriver')
-
-    context.driver = webdriver.Chrome(options=options, service=service)
-    context.driver.set_window_size(1920,1080)
+    # options = webdriver.ChromeOptions()
+    # options.add_argument('--headless')
+    # service = Service(executable_path='//Users/anithamurali/Downloads/Anitha_Internship_project/chromedriver')
+    #
+    # context.driver = webdriver.Chrome(options=options, service=service)
+    # context.driver.set_window_size(1920,1080)
     # context.driver = webdriver.Firefox(service=service)
     # context.driver = webdriver.Safari()
 
 
     ### BROWSERSTACK ###
-#     # Register for BrowserStack, then grab it from https://www.browserstack.com/accounts/settings
-#     bs_user = 'anithaprakash_Hemdkb'
-#     bs_key = 'Qars2pwqkMUGxRPfXZGA'
-#     url = f'http://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
-#
-#     options = Options()
-#     bstack_options = {
-#     'os': 'mac',
-#     'osVersion': '13.5',
-#     'browserName': 'Firefox',
-#     'sessionName': scenario_name
-# }
-#     options.set_capability('bstack:options', bstack_options)
-#     context.driver = webdriver.Remote(command_executor=url, options=options)
+    # Register for BrowserStack, then grab it from https://www.browserstack.com/accounts/settings
+    bs_user = 'anithaprakash_Hemdkb'
+    bs_key = 'Qars2pwqkMUGxRPfXZGA'
+    url = f'http://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
+
+    options = Options()
+    bstack_options = {
+    'os': "OS X",
+    'osVersion': "Ventura",
+    'browserName': "Chrome",
+    'sessionName': "scenario_name"
+}
+    options.set_capability('bstack:options', bstack_options)
+    context.driver = webdriver.Remote(command_executor=url, options=options)
 
 
     context.driver.maximize_window()
@@ -59,7 +59,7 @@ def browser_init(context):
 def before_scenario(context, scenario):
     print('\nStarted scenario: ', scenario.name)
     logger.info(f'\nStarted scenario: {scenario.name}')
-    browser_init(context)
+    browser_init(context,scenario.name)
 
 
 def before_step(context, step):
