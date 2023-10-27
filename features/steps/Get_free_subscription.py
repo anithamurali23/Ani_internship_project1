@@ -22,7 +22,8 @@ def log_in_to_page(context):
 
 @then('Click on Get a free subscription')
 def click_free_subscription(context):
-    context.app.main_screen_page.get_subscription_click()
+    context.app.main_screen_page.click_menu_button()
+    context.app.main_screen_page.click_connect_the_company()
 
 
 @then('Switch the new tab')
